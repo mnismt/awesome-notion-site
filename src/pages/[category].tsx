@@ -1,7 +1,7 @@
 import Item from '@/components/Item'
 import { getDefaultLayout } from '@/layouts/DefaultLayout'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { getCategories, getItems } from 'src/logic/item'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { Content, getCategories, getItems } from 'src/logic/item'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategories()
@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const category = params.category
-  const contents = await getItems(category)
+  const contents: Array<Content> = await getItems(category)
   return {
     props: {
       contents,
@@ -22,19 +22,15 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   }
 }
 
-const Category = ({ contents }: any) => {
+const Category = ({
+  contents,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <div className="flex flex-col mt-4">
         <div className="grid grid-cols-3 gap-2">
-          {contents.map((content: any, index: number) => (
-            <Item
-              key={index}
-              title={content.Title}
-              category={content.Category}
-              description={content.Description}
-              link={content.Link}
-            />
+          {contents.map((content: Content, index: number) => (
+            <Item key={index} {...content} />
           ))}
         </div>
       </div>
