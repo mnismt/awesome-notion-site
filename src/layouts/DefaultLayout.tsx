@@ -1,4 +1,13 @@
 import Navbar from '@/components/Navbar'
+import Link from 'next/link'
+
+const Tab = ({ title, link }: { title: string; link: string }) => (
+  <Link href={link}>
+    <div className="p-4 border-2 border-black rounded-lg cursor-pointer hover:shadow-xl transition duration-500 w-full text-center">
+      <h1 className="text-2xl font-bold">{title}</h1>
+    </div>
+  </Link>
+)
 
 const DefaultLayout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -12,6 +21,14 @@ const DefaultLayout = ({ children }: { children: JSX.Element }) => {
             placeholder="Find something useful"
             className="border-2 border-black p-2 rounded-lg outline-none"
           />
+        </div>
+        <div className="flex space-x-2">
+          <Tab title="Websites" link="/websites" />
+          <Tab title="Resources" link="/resources" />
+          <Tab title="CMS" link="/cms" />
+          <Tab title="Tools" link="/tools" />
+          <Tab title="Dev" link="/dev" />
+          <Tab title="Communities" link="/communities" />
         </div>
         {children}
       </div>
