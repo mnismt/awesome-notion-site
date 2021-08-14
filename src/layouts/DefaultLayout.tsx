@@ -1,13 +1,19 @@
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 
-const Tab = ({ title, link }: { title: string; link: string }) => (
-  <Link href={link}>
-    <div className="w-full p-4 text-center transition duration-500 border-2 border-black rounded-lg cursor-pointer hover:shadow-xl">
-      <h1 className="text-2xl font-bold">{title}</h1>
-    </div>
-  </Link>
-)
+const Tab = ({ title, link }: { title: string; link: string }) => {
+  return (
+    <Link href={link} passHref>
+      <div
+        className={`w-full p-4 text-center transition duration-500 
+      border-2 border-black rounded-lg
+      hover:shadow-xl `}
+      >
+        <a className="text-2xl font-bold">{title}</a>
+      </div>
+    </Link>
+  )
+}
 
 const DefaultLayout = ({ children }: { children: JSX.Element }) => {
   return (
