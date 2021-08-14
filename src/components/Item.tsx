@@ -1,3 +1,5 @@
+import Favicon from './Favicon'
+
 const Item = ({
   title,
   description,
@@ -11,10 +13,7 @@ const Item = ({
 }) => (
   <div className="flex flex-col p-4 space-y-2 transition duration-500 border-2 border-black rounded-lg hover:border-purple-800">
     <div className="flex items-center space-x-2 justify-first">
-      <img
-        src={`https://www.google.com/s2/favicons?domain=${link}`}
-        className="w-4 h-4"
-      />
+      <Favicon key={link} link={link} />
       <a href={link} target="_blank">
         <h1 className="text-xl font-bold">{title}</h1>
       </a>
