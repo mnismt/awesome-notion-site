@@ -1,9 +1,10 @@
+import { InferGetStaticPropsType } from 'next'
 import { getDefaultLayout } from '@/layouts/DefaultLayout'
-import { getItems } from 'src/logic/item'
+import { Content, getItems } from 'src/logic/item'
 import Item from '@/components/Item'
 
 export const getStaticProps = async () => {
-  const contents = await getItems()
+  const contents: Array<Content> = await getItems()
   return {
     props: {
       contents,
@@ -11,19 +12,13 @@ export const getStaticProps = async () => {
   }
 }
 
-const Home = ({ contents }: any) => {
+const Home = ({ contents }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <div className="flex flex-col mt-4">
-        <div className="grid grid-cols-3 gap-2">
-          {contents.map((content: any, index: number) => (
-            <Item
-              key={index}
-              title={content.Title}
-              category={content.Category}
-              description={content.Description}
-              link={content.Link}
-            />
+        <div className="grid grid-cols-3 gap-4">
+          {contents.map((content, index: number) => (
+            <Item key={index} {...content} />
           ))}
         </div>
       </div>
