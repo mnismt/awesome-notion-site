@@ -23,7 +23,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 }
 
 const Category = ({ contents }: any) => {
-  console.log(contents)
   return (
     <>
       <div className="flex flex-col mt-4">

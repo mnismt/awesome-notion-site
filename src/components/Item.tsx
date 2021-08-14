@@ -9,8 +9,8 @@ const Item = ({
   link: string
   category: string
 }) => (
-  <div className="flex flex-col space-y-2 p-4 border-2 border-black rounded-lg hover:border-purple-800 transition duration-500">
-    <div className="flex items-center justify-first space-x-2">
+  <div className="flex flex-col p-4 space-y-2 transition duration-500 border-2 border-black rounded-lg hover:border-purple-800">
+    <div className="flex items-center space-x-2 justify-first">
       <img
         src={`https://www.google.com/s2/favicons?domain=${link}`}
         className="w-4 h-4"
@@ -24,7 +24,7 @@ const Item = ({
         <p className="text-sm uppercase">{category}</p>
       </div>
     </div>
-    <p className="text-md font-light">{description}</p>
+    <p className="font-light text-md">{description}</p>
   </div>
 )
 

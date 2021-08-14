@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Tab = ({ title, link }: { title: string; link: string }) => (
   <Link href={link}>
-    <div className="p-4 border-2 border-black rounded-lg cursor-pointer hover:shadow-xl transition duration-500 w-full text-center">
+    <div className="w-full p-4 text-center transition duration-500 border-2 border-black rounded-lg cursor-pointer hover:shadow-xl">
       <h1 className="text-2xl font-bold">{title}</h1>
     </div>
   </Link>
@@ -14,12 +14,12 @@ const DefaultLayout = ({ children }: { children: JSX.Element }) => {
     <>
       <Navbar />
       <div className="py-4 px-52">
-        <div className="flex flex-col justify-center items-center space-y-4 mb-4">
+        <div className="flex flex-col items-center justify-center mb-4 space-y-4">
           <h1 className="text-4xl text-center">Awesome Notion</h1>
           <input
             type="text"
             placeholder="Find something useful"
-            className="border-2 border-black p-2 rounded-lg outline-none"
+            className="p-2 border-2 border-black rounded-lg outline-none"
           />
         </div>
         <div className="flex space-x-2">
