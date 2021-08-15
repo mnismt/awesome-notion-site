@@ -7,9 +7,18 @@ export interface Content {
   Tags: Array<string>
 }
 
+export interface Category {
+  id: string
+  Name: string
+  Description: string
+  Color: string
+}
+
+const WORKER_ENDPOINT = process.env.WORKER_ENDPOINT
+
 export const getItems = async (category?: string) => {
   const res = await fetch(
-    'https://notion-mnismt-worker.viplovetop.workers.dev/v1/table/82de766385fc439fbb010d9cf01e075b'
+    `${WORKER_ENDPOINT}/v1/table/82de766385fc439fbb010d9cf01e075b`
   )
   const contents: Array<Content> = await res.json()
   if (category)
@@ -18,10 +27,14 @@ export const getItems = async (category?: string) => {
 }
 
 export const getCategories = async () => {
-  const contents = await getItems()
-  const categories = contents.map((content) => content.Category)
-  // filter duplicate category
-  return categories.filter(
-    (category, index) => categories.indexOf(category) === index
+  const res = await fetch(
+    `${WORKER_ENDPOINT}/v1/table/8195fcf92e55473fbd167280525b4749`
   )
+  const categories: Array<Category> = await res.json()
+  return categories
+}
+
+export const getCategoriesName = async () => {
+  const categories = await getCategories()
+  return categories.map((category) => category.Name)
 }

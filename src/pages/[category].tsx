@@ -1,11 +1,13 @@
 import Item from '@/components/Item'
 import { getDefaultLayout } from '@/layouts/DefaultLayout'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { Content, getCategories, getItems } from 'src/logic/item'
+import { Content, getCategoriesName, getItems } from 'src/logic/item'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const categories = await getCategories()
-  const paths = categories.map((category) => ({ params: { category } }))
+  const categories = await getCategoriesName()
+  const paths = categories.map((category) => ({
+    params: { category: category.toLowerCase() },
+  }))
   return {
     paths,
     fallback: false,
