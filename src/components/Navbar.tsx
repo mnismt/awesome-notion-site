@@ -7,8 +7,6 @@ const Navbar = () => {
         <Link href="/" passHref>
           <a className="text-xl font-bold">Home</a>
         </Link>
-        <h1 className="text-xl font-bold">Cheatsheet</h1>
-        <h1 className="text-xl font-bold">Font generator</h1>
       </div>
       <div className="flex items-center justify-center w-1/3">
         <Link href="/" passHref>
