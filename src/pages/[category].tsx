@@ -1,7 +1,7 @@
 import Item from '@/components/Item'
 import { getDefaultLayout } from '@/layouts/DefaultLayout'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { Content, getCategoriesName, getItems } from 'src/logic/item'
+import { Content, getCategoriesName, getItems } from '@/logic/item'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesName()
@@ -29,8 +29,8 @@ const Category = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <div className="flex flex-col mt-4">
-        <div className="grid grid-cols-3 gap-2">
+      <div className="flex flex-col mt-4 space-y-10">
+        <div className="grid grid-cols-3 gap-4">
           {contents.map((content: Content, index: number) => (
             <Item key={index} {...content} />
           ))}

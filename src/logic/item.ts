@@ -1,6 +1,7 @@
 export interface Content {
   id: string
   Title: string
+  Type: string
   Description: string
   Link: string
   Category: string
@@ -28,7 +29,7 @@ export const getItems = async (category?: string) => {
 
 export const getCategories = async () => {
   const res = await fetch(
-    `${WORKER_ENDPOINT}/v1/table/8195fcf92e55473fbd167280525b4749`
+    `${WORKER_ENDPOINT}/v1/table/34f183ab86394feb84e3db5e7714db80`
   )
   const categories: Array<Category> = await res.json()
   return categories
