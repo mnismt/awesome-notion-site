@@ -2,37 +2,39 @@ import { Content } from 'src/logic/item'
 import Favicon from './Favicon'
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 
-const Item = (content: Content) => (
-  <div className="flex flex-col justify-between space-y-2 h-full p-4 transition duration-500 border-2 border-black rounded-lg hover:border-purple-800">
+const Item = (props: Content) => (
+  <div className="flex flex-col justify-between h-full px-4 py-3 space-y-2 transition duration-700 border-2 border-black rounded-lg group hover:shadow-2xl ">
     <div className="flex flex-col space-y-1">
       <a
-        className="flex items-center space-x-2 justify-first"
-        href={content.Link}
+        className="flex items-center space-x-2 transition duration-700 justify-first"
+        href={props.Link}
         target="_blank"
       >
-        <Favicon key={content.Link} link={content.Link} />
-        <h1 className="text-xl font-bold">{content.Title}</h1>
+        <Favicon key={props.Link} link={props.Link} />
+        <h1 className="text-xl font-bold">{props.Title}</h1>
         <ExternalLinkIcon width={16} height={16} />
       </a>
       <div className="flex">
         <div className="px-2 py-1 border-2 border-black rounded-xl">
-          <p className="text-sm uppercase">{content.Category}</p>
+          <p className="text-sm uppercase">{props.Category}</p>
         </div>
       </div>
       <div>
-        <p className="font-light text-md">{content.Description}</p>
+        <p className="font-light text-md">{props.Description}</p>
       </div>
     </div>
-    <div className="flex flex-col space-y-2">
-      <hr className="border-black w-full" />
-      {content.Tags &&
-        content.Tags.map((tag, index: number) => (
-          <div key={index} className="flex">
-            <span className="border-2 border-double border-black py-1 px-2 rounded-xl">
-              {tag}
-            </span>
-          </div>
-        ))}
+    <div className="flex flex-col space-y-3">
+      <hr className={`w-full border-black `} />
+      <div className="flex space-x-1">
+        {props.Tags &&
+          props.Tags.map((tag, index: number) => (
+            <div key={index} className="flex">
+              <span className="px-2 py-1 border-2 border-black rounded-xl">
+                {tag}
+              </span>
+            </div>
+          ))}
+      </div>
     </div>
   </div>
 )
