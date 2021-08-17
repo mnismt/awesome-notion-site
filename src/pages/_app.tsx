@@ -1,11 +1,10 @@
 import '../styles/globals.css'
+import type { AppProps } from 'next/app'
 import 'tailwindcss/tailwind.css'
 
-import type { AppProps } from 'next/app'
-
 function MyApp({ Component, pageProps }: AppProps) {
-  // get persistent layout
   const getLayout = (Component as any).getLayout
-  return getLayout(<Component {...pageProps} />)
+  return getLayout && getLayout(<Component {...pageProps} />)
 }
+
 export default MyApp
