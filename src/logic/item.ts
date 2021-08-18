@@ -1,3 +1,5 @@
+import { removeDuplicateElements } from './utils'
+
 export interface Content {
   id: string
   Title: string
@@ -27,12 +29,23 @@ export const getItems = async (category?: string) => {
   return contents
 }
 
+export const getItemsByTag = async (tag: string) => {
+  const items = await getItems()
+  return items.filter((item) => item.Tags.includes(tag))
+}
+
 export const getCategories = async () => {
   const res = await fetch(
     `${WORKER_ENDPOINT}/v1/table/34f183ab86394feb84e3db5e7714db80`
   )
   const categories: Array<Category> = await res.json()
   return categories
+}
+
+export const getTags = async () => {
+  const items = await getItems()
+  const tags = removeDuplicateElements(items.map((item) => item.Tags).flat())
+  return tags
 }
 
 export const getCategoriesName = async () => {
