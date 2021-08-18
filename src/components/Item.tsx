@@ -11,13 +11,14 @@ const Item = (props: Content) => (
         className="flex items-center space-x-2 transition duration-700 justify-first"
         href={props.Link}
         target="_blank"
+        rel="noreferrer"
       >
         <Favicon key={props.Link} link={props.Link} />
         <h1 className="text-xl font-bold">{props.Title}</h1>
         <ExternalLinkIcon width={16} height={16} />
       </a>
       <div className="flex">
-        <Link href={`/${props.Category}`}>
+        <Link href={`/${props.Category}`} passHref>
           <div className="text-sm uppercase py-2">
             <Badge text={props.Category} pointer />
           </div>

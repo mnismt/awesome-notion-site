@@ -8,6 +8,7 @@ const Navbar = () => {
           className="text-xl font-bold"
           href="https://mnismt.notion.site/About-3d0a7bf942ad42a3b4492e4ab8c4e4ca"
           target="_blank"
+          rel="noreferrer"
         >
           About
         </a>
