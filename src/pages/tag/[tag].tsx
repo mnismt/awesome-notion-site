@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { Content, getItemsByTag, getTags } from '@/logic/item'
 import Item from '@/components/Item'
-import { capitalizeFirstLetter } from '@/logic/utils'
+import { getDefaultVariants } from '@/logic/utils'
+import { motion } from 'framer-motion'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tags = await getTags()
@@ -16,12 +17,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const tag = params.tag
-  const tagName = capitalizeFirstLetter(tag)
-  const contents: Array<Content> = await getItemsByTag(tagName)
+  const contents: Array<Content> = await getItemsByTag(tag)
   return {
     props: {
       contents,
-      tag: tagName,
+      tag,
     },
   }
 }
@@ -30,17 +30,29 @@ const Tag = ({
   contents,
   tag,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const variants = getDefaultVariants(0)
+  // Get the original tag
+  const originalTag = contents[0].Tags.filter(
+    (contentTag: string) => contentTag.toLowerCase() === tag
+  )[0]
   return (
     <>
-      <div className="flex flex-col mt-4 space-y-5">
+      <motion.div
+        key={tag}
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        className="flex flex-col mt-4 space-y-5"
+      >
         <hr className="w-full border-black" />
-        <h1 className="text-4xl font-bold text-center">{tag}</h1>
+        <h1 className="text-4xl font-bold text-center">{originalTag}</h1>
         <div className="grid grid-cols-3 gap-4">
           {contents.map((content: Content, index: number) => (
             <Item key={index} {...content} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }
