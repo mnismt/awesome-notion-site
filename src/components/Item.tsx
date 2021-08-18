@@ -24,7 +24,7 @@ const Item = (props: Content) => (
       </div>
     </div>
     <div className="flex flex-col space-y-3">
-      <hr className={`w-full border-black `} />
+      <hr className="w-full border-black" />
       <div className="flex space-x-1">
         {props.Tags &&
           props.Tags.map((tag, index: number) => (
