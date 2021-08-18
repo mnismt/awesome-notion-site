@@ -1,4 +1,5 @@
 import create, { GetState, SetState } from 'zustand'
+import categories from './categories.json'
 
 export interface Category {
   id: string
@@ -6,46 +7,6 @@ export interface Category {
   description: string
   active: boolean
 }
-
-const defaultConfig: Array<Category> = [
-  {
-    id: '0e399e46-edb0-4ad7-a318-b63d0cecd8dd',
-    name: 'Websites',
-    description: 'Create website or blog with Notion',
-    active: false,
-  },
-  {
-    id: 'aa01407b-f773-4a6e-a84f-08c5cd34ef77',
-    name: 'Resources',
-    description:
-      'The best places to find templates, knowledge,... about Notion.',
-    active: false,
-  },
-  {
-    id: '8c3cbce6-bc71-4283-b4c3-8afc8214ec1c',
-    name: 'CMS',
-    description: 'Notion as a Content Management System',
-    active: false,
-  },
-  {
-    id: '9c65e653-6e7d-437e-9767-b4a8ed8f9b07',
-    name: 'Tools',
-    description: 'The Notion toolbox',
-    active: false,
-  },
-  {
-    id: 'f48533da-d1f0-4023-9908-0861387edff8',
-    name: 'Dev',
-    description: 'Build new things with Notion.',
-    active: false,
-  },
-  {
-    id: '76dc85cd-452a-4c8a-a0d5-ddaf04b6aa32',
-    name: 'Communities',
-    description: 'Learn and find inspiration from other Notion users.',
-    active: false,
-  },
-]
 
 interface ConfigStore {
   categories: Array<Category>
@@ -84,4 +45,11 @@ export const useConfigStore = create<ConfigStore>(
   })
 )
 
-useConfigStore.setState({ categories: defaultConfig })
+useConfigStore.setState({
+  categories: categories.map((category) => ({
+    id: category.id,
+    name: category.Name,
+    description: category.Description,
+    active: false,
+  })),
+})
