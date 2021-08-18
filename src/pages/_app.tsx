@@ -4,6 +4,7 @@ import 'tailwindcss/tailwind.css'
 import { useRouter } from 'next/dist/client/router'
 import { useEffect } from 'react'
 import { useConfigStore } from 'src/store'
+import { getDefaultLayout } from '@/layouts/DefaultLayout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -21,8 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       activeAllCategories()
     }
   }, [router.asPath])
-  const getLayout = (Component as any).getLayout
-  return getLayout && getLayout(<Component {...pageProps} />)
+  const getLayout = (Component as any).getLayout || getDefaultLayout
+  return getLayout(<Component {...pageProps} />)
 }
 
 export default MyApp

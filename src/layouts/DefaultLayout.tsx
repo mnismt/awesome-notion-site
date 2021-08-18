@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import Link from 'next/link'
 import { useConfigStore } from 'src/store'
 
@@ -55,7 +56,7 @@ const DefaultLayout = ({ children }: { children: JSX.Element }) => {
             )
           })}
         </div>
-        {children}
+        <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
       </div>
       <Footer />
     </>

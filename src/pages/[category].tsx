@@ -6,6 +6,7 @@ import { useConfigStore } from 'src/store'
 import Badge from '@/components/Badge'
 import { removeDuplicateElements } from '@/logic/utils'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesName()
@@ -41,7 +42,12 @@ const Category = ({
   )
   return (
     <>
-      <div className="flex flex-col mt-4 space-y-5">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="flex flex-col mt-4 space-y-5"
+      >
         <hr className="w-full border-black" />
         <h1 className="text-2xl text-center">
           {currentCategory && currentCategory.description}
@@ -60,7 +66,7 @@ const Category = ({
             <Item key={index} {...content} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }
