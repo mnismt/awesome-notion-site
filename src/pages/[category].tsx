@@ -5,6 +5,7 @@ import { Content, getCategoriesName, getItems } from '@/logic/item'
 import { useConfigStore } from 'src/store'
 import Badge from '@/components/Badge'
 import { removeDuplicateElements } from '@/logic/utils'
+import Link from 'next/link'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesName()
@@ -47,7 +48,11 @@ const Category = ({
         </h1>
         <div className="flex items-center justify-center space-x-2">
           {tags.map((tag: string, index: number) => (
-            <Badge key={index} text={tag} />
+            <Link key={index} href={`/tag/${tag.toLowerCase()}`} passHref>
+              <div>
+                <Badge text={tag} pointer />
+              </div>
+            </Link>
           ))}
         </div>
         <div className="grid grid-cols-3 gap-4">
