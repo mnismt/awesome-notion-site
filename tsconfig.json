@@ -18,7 +18,9 @@
       "@/components/*": ["src/components/*"],
       "@/pages/*": ["src/pages/*"],
       "@/layouts/*": ["src/layouts/*"],
-      "@/logic/*": ["src/logic/*"]
+      "@/logic/*": ["src/logic/*"],
+      "@/store/*": ["src/store/*"],
+      "@/mocks/*": ["src/mocks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
