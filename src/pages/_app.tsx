@@ -1,10 +1,13 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 import 'tailwindcss/tailwind.css'
+import type { AppProps } from 'next/app'
 import { useRouter } from 'next/dist/client/router'
 import { useEffect } from 'react'
 import { useConfigStore } from 'src/store'
-import { getDefaultLayout } from '@/layouts/DefaultLayout'
+import Navbar from '@/components/Navbar'
+import { AnimatePresence } from 'framer-motion'
+import Footer from '@/components/Footer'
+import CategoriesTab from '@/components/CategoriesTab'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -22,8 +25,26 @@ function MyApp({ Component, pageProps }: AppProps) {
       activeAllCategories()
     }
   }, [router.asPath])
-  const getLayout = (Component as any).getLayout || getDefaultLayout
-  return getLayout(<Component {...pageProps} />)
+  return (
+    <>
+      <Navbar />
+      <div className="py-4 px-56 mb-20">
+        <div className="flex flex-col items-center justify-center mb-4 space-y-4">
+          <h1 className="text-4xl text-center font-bold">Awesome Notion</h1>
+          <input
+            type="text"
+            placeholder="Find something useful"
+            className="p-2 border-2 border-black rounded-lg outline-none"
+          />
+        </div>
+        <CategoriesTab />
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} />
+        </AnimatePresence>
+      </div>
+      <Footer />
+    </>
+  )
 }
 
 export default MyApp

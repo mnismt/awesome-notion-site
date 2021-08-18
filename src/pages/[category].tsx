@@ -1,11 +1,10 @@
-import Item from '@/components/Item'
-import { getDefaultLayout } from '@/layouts/DefaultLayout'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
+import Item from '@/components/Item'
 import { Content, getCategoriesName, getItems } from '@/logic/item'
 import { useConfigStore } from 'src/store'
 import Badge from '@/components/Badge'
 import { removeDuplicateElements } from '@/logic/utils'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -70,7 +69,5 @@ const Category = ({
     </>
   )
 }
-
-Category.getLayout = getDefaultLayout
 
 export default Category

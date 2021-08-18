@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next'
-import { getDefaultLayout } from '@/layouts/DefaultLayout'
 import { Content, getItems } from 'src/logic/item'
 import Item from '@/components/Item'
 
@@ -25,7 +24,5 @@ const Home = ({ contents }: InferGetStaticPropsType<typeof getStaticProps>) => {
     </>
   )
 }
-
-Home.getLayout = getDefaultLayout
 
 export default Home

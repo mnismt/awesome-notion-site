@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { getDefaultLayout } from '@/layouts/DefaultLayout'
 import { Content, getItemsByTag, getTags } from '@/logic/item'
 import Item from '@/components/Item'
 import { capitalizeFirstLetter } from '@/logic/utils'
@@ -45,7 +44,5 @@ const Tag = ({
     </>
   )
 }
-
-Tag.getLayout = getDefaultLayout
 
 export default Tag
