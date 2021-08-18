@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { Content, getCategoriesName, getItems } from '@/logic/item'
 import { useConfigStore } from 'src/store'
 import Badge from '@/components/Badge'
+import { removeDuplicateElements } from '@/logic/utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesName()
@@ -19,8 +20,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const category = params.category
   const contents: Array<Content> = await getItems(category)
-  const tagsList = contents.map((content) => content.Tags).flat()
-  const tags = tagsList.filter((tag, index) => tagsList.indexOf(tag) === index)
+  const tags = removeDuplicateElements(
+    contents.map((content) => content.Tags).flat()
+  )
   return {
     props: {
       contents,
