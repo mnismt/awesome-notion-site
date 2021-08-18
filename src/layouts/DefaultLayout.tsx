@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import { useConfigStore } from 'src/store'
@@ -32,7 +33,7 @@ const DefaultLayout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       <Navbar />
-      <div className="py-4 px-56">
+      <div className="py-4 px-56 mb-20">
         <div className="flex flex-col items-center justify-center mb-4 space-y-4">
           <h1 className="text-4xl text-center font-bold">Awesome Notion</h1>
           <input
@@ -56,6 +57,7 @@ const DefaultLayout = ({ children }: { children: JSX.Element }) => {
         </div>
         {children}
       </div>
+      <Footer />
     </>
   )
 }
