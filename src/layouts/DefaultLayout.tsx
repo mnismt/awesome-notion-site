@@ -16,7 +16,9 @@ const Tab = ({
       <div
         className={`w-full p-4 text-center transition duration-500 border-2 border-black rounded-lg cursor-pointer
          ${
-           active ? `border-black text-black` : 'border-gray-500 text-gray-500'
+           active
+             ? `border-black text-black hover:shadow-xl`
+             : 'border-gray-500 text-gray-500'
          } hover:border-black hover:text-black`}
       >
         <a className="text-xl font-bold lg:text-2xl">{title}</a>
@@ -30,9 +32,9 @@ const DefaultLayout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       <Navbar />
-      <div className="py-4 px-52">
+      <div className="py-4 px-56">
         <div className="flex flex-col items-center justify-center mb-4 space-y-4">
-          <h1 className="text-4xl text-center">Awesome Notion</h1>
+          <h1 className="text-4xl text-center font-bold">Awesome Notion</h1>
           <input
             type="text"
             placeholder="Find something useful"
