@@ -11,7 +11,7 @@ const Tab = ({
   active: boolean
 }) => {
   return (
-    <Link href={link} passHref>
+    <Link href={link} scroll={false} passHref>
       <div
         className={`w-full p-4 text-center transition duration-500 border-2 border-black rounded-lg cursor-pointer
          ${
