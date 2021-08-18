@@ -35,15 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navbar />
-      <div className="py-4 px-56 mb-20">
-        <div className="flex flex-col items-center justify-center mb-4 space-y-4">
-          <h1 className="text-4xl text-center font-bold">Awesome Notion</h1>
-          <input
-            type="text"
-            placeholder="Find something useful"
-            className="p-2 border-2 border-black rounded-lg outline-none"
-          />
-        </div>
+      <div className="py-4 px-56 mb-20 min-h-screen">
         <CategoriesTab />
         <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
       </div>
