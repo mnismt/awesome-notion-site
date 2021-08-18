@@ -25,6 +25,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       activeAllCategories()
     }
   }, [router.asPath])
+  // check persistent layout
+  const getLayout = (Component as any).getLayout
+  const children = getLayout ? (
+    getLayout(<Component {...pageProps} />)
+  ) : (
+    <Component {...pageProps} />
+  )
   return (
     <>
       <Navbar />
@@ -38,9 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           />
         </div>
         <CategoriesTab />
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} />
-        </AnimatePresence>
+        <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
       </div>
       <Footer />
     </>
