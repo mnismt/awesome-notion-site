@@ -51,6 +51,7 @@ interface ConfigStore {
   setCategories(categories: Array<Category>): void
   activeCategory(index: number): void
   getCurrentActiveCategory(): Category
+  activeAllCategories(): void
 }
 
 export const useConfigStore = create<ConfigStore>(
@@ -71,6 +72,13 @@ export const useConfigStore = create<ConfigStore>(
     getCurrentActiveCategory() {
       const categories = get().categories
       return categories.filter((category) => category.active)[0]
+    },
+    activeAllCategories() {
+      const categories = get().categories.map((category) => ({
+        ...category,
+        active: true,
+      }))
+      set({ categories })
     },
   })
 )

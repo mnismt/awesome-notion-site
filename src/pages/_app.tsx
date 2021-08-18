@@ -9,17 +9,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const categories = useConfigStore((state) => state.categories)
   const activeCategory = useConfigStore().activeCategory
+  const activeAllCategories = useConfigStore().activeAllCategories
   useEffect(() => {
     const path = router.asPath
-    let index: number
     if (path !== '/') {
-      index = categories.findIndex((category) =>
+      const index = categories.findIndex((category) =>
         path.includes(category.name.toLowerCase())
       )
+      activeCategory(index)
     } else {
-      index = -1
+      activeAllCategories()
     }
-    activeCategory(index)
   }, [router.asPath])
   const getLayout = (Component as any).getLayout
   return getLayout && getLayout(<Component {...pageProps} />)
