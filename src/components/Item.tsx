@@ -17,9 +17,11 @@ const Item = (props: Content) => (
         <ExternalLinkIcon width={16} height={16} />
       </a>
       <div className="flex">
-        <div className="px-2 py-1 border-2 border-black rounded-xl">
-          <p className="text-sm uppercase">{props.Category}</p>
-        </div>
+        <Link href={`/${props.Category}`}>
+          <div className="text-sm uppercase py-2">
+            <Badge text={props.Category} pointer />
+          </div>
+        </Link>
       </div>
       <div>
         <p className="font-light text-md">{props.Description}</p>
