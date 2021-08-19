@@ -7,7 +7,7 @@ import Item from './Item'
 import SearchBox from './SearchBox'
 
 import { Content } from '@/logic/item'
-import { getDefaultVariants } from '@/logic/utils'
+import { getDefaultVariants, removeDuplicateElements } from '@/logic/utils'
 
 const ContentBox = ({ contents }: { contents: Content[] }) => {
   const [items, setItems] = useState<Content[]>(contents)
@@ -27,7 +27,8 @@ const ContentBox = ({ contents }: { contents: Content[] }) => {
     setItems(results as Content[])
   }, [searchText])
   useEffect(() => {
-    setTags(items.map((item) => item.Tags).flat())
+    const tags = items.map((item) => item.Tags).flat()
+    setTags(removeDuplicateElements(tags))
     setEnableAnimation(true)
   }, [items])
   return (
