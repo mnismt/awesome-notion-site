@@ -1,7 +1,6 @@
 import { Content } from 'src/logic/item'
 import Favicon from './Favicon'
 import { ExternalLinkIcon } from '@heroicons/react/solid'
-import Link from 'next/link'
 import Badge from './Badge'
 
 const Item = (props: Content) => (
@@ -17,12 +16,8 @@ const Item = (props: Content) => (
         <h1 className="text-xl font-bold">{props.Title}</h1>
         <ExternalLinkIcon width={16} height={16} />
       </a>
-      <div className="flex">
-        <Link href={`/${props.Category}`} passHref>
-          <div className="text-sm uppercase py-2">
-            <Badge text={props.Category} pointer />
-          </div>
-        </Link>
+      <div className="flex text-sm uppercase py-1">
+        <Badge text={props.Category} link={`/${props.Category}`} />
       </div>
       <div>
         <p className="font-light text-md">{props.Description}</p>
@@ -33,15 +28,7 @@ const Item = (props: Content) => (
       <div className="flex space-x-1">
         {props.Tags &&
           props.Tags.map((tag, index: number) => (
-            <Link
-              key={index}
-              href={`/tag/${tag.toLowerCase()}`}
-              passHref={true}
-            >
-              <div className="flex">
-                <Badge text={tag} pointer />
-              </div>
-            </Link>
+            <Badge key={index} text={tag} link={`/tag/${tag.toLowerCase()}`} />
           ))}
       </div>
     </div>

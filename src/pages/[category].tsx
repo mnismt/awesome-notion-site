@@ -95,11 +95,7 @@ const Category = ({
         delay={0.3}
       >
         {tags.map((tag: string, index: number) => (
-          <Link key={index} href={`/tag/${tag.toLowerCase()}`} passHref>
-            <div>
-              <Badge text={tag} pointer />
-            </div>
-          </Link>
+          <Badge key={index} text={tag} link={`/tag/${tag.toLowerCase()}`} />
         ))}
       </AnimationWrapper>
       <AnimationWrapper delay={0.5} className="grid grid-cols-3 gap-4">
