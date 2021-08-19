@@ -21,9 +21,13 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center justify-end w-1/3">
-        <h1 className="text-sm sm:text-md lg:text-xl font-bold hover:scale-110 transform duration-500">
+        <a
+          href="https://mnismt.notion.site/Under-review-cd6cb967662f4f6d87a555540dc0dad7"
+          target="_blank"
+          className="text-sm sm:text-md lg:text-xl font-bold hover:scale-110 transform duration-500"
+        >
           Submit
-        </h1>
+        </a>
       </div>
     </div>
   )
