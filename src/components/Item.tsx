@@ -1,8 +1,23 @@
 import { Content } from 'src/logic/item'
 import Favicon from './Favicon'
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import Badge from './Badge'
 
+const ExternalIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-4 w-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+    />
+  </svg>
+)
 const Item = (props: Content) => (
   <div className="flex flex-col justify-between h-full px-4 py-3 space-y-2 transition duration-700 border-2 border-black rounded-lg group hover:shadow-2xl ">
     <div className="flex flex-col space-y-1">
@@ -16,7 +31,7 @@ const Item = (props: Content) => (
         <h1 className="text-sm md:text-md lg:text-xl font-bold">
           {props.Title}
         </h1>
-        <ExternalLinkIcon width={16} height={16} />
+        <ExternalIcon />
       </a>
       <div className="flex text-sm uppercase py-1">
         <Badge text={props.Category} link={`/${props.Category}`} />
