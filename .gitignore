@@ -34,3 +34,4 @@ yarn-error.log*
 .vercel
 
 src/store/categories.json
+src/mocks
