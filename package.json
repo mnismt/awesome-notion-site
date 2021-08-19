@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node fetchConfig && next dev",
+    "dev": "node fetchConfig && node fetchMocks && next dev",
     "build": "node fetchConfig && next build",
     "start": "next start",
     "lint": "next lint"
