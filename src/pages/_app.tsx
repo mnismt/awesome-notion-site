@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion'
 import Footer from '@/components/Footer'
 import CategoriesTab from '@/components/CategoriesTab'
 import SEO from '@/components/SEO'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -35,11 +36,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
   return (
     <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter"
+          rel="stylesheet"
+        />
+      </Head>
       <SEO />
       <Navbar />
       <div className="py-4 px-8 sm:px-16 md:px-32 lg:px-40 xl:px-56 mb-20 min-h-screen">
         <div>
-          <p className="px-4 py-4 mb-8 text-lg sm:text-xl font-bold text-center">
+          <p className="px-4 md:py-4 mb-8 text-lg sm:text-xl font-bold text-center">
             A curated list of awesome Notion websites, resources, tools,... and
             more.
           </p>

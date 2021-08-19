@@ -1,1 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter');
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  border-width: 2px;
+  border-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: black;
+}
