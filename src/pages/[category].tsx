@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Link from 'next/link'
 import Item from '@/components/Item'
-import { Content, getCategoriesName, getItems } from '@/logic/item'
-import Badge from '@/components/Badge'
-import { getDefaultVariants, removeDuplicateElements } from '@/logic/utils'
-import { AnimatePresence, motion } from 'framer-motion'
 import { getCategoryLayout } from '@/layouts/CategoryLayout'
+import ContentBox from '@/components/ContentBox'
+import { AnimatePresence, motion } from 'framer-motion'
+
 import { useConfigStore } from 'src/store'
+import { Content, getCategoriesName, getItems } from '@/logic/item'
+import { getDefaultVariants } from '@/logic/utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesName()
@@ -22,55 +22,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const category = params.category
   const contents: Array<Content> = await getItems(category)
-  const tags = removeDuplicateElements(
-    contents.map((content) => content.Tags).flat()
-  )
   return {
     props: {
       category,
       contents,
-      tags,
     },
   }
-}
-
-const AnimationWrapper = ({
-  delay,
-  children,
-  className,
-}: {
-  delay: number
-  children: JSX.Element
-  className: string
-}) => {
-  const variants = getDefaultVariants(0)
-  return (
-    <motion.div
-      variants={variants}
-      animate={{ opacity: 1, y: 0, transition: { delay } }}
-      initial="hidden"
-      exit="hidden"
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
 }
 
 const Category = ({
   category,
   contents,
-  tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const currentCategory = useConfigStore((state) =>
     state.getCurrentActiveCategory()
   )
   const variants = getDefaultVariants(0.3)
-
   return (
     <motion.div
       key={category}
-      className="flex flex-col space-y-5"
+      className="flex flex-col space-y-4"
       variants={variants}
       initial="hidden"
       animate="visible"
@@ -90,19 +61,16 @@ const Category = ({
           </motion.h1>
         )}
       </AnimatePresence>
-      <AnimationWrapper
-        className="flex items-center justify-center space-x-2"
-        delay={0.3}
+      <motion.div
+        variants={variants}
+        custom={1.5}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        className="flex flex-col space-y-4"
       >
-        {tags.map((tag: string, index: number) => (
-          <Badge key={index} text={tag} link={`/tag/${tag.toLowerCase()}`} />
-        ))}
-      </AnimationWrapper>
-      <AnimationWrapper delay={0.5} className="grid grid-cols-3 gap-4">
-        {contents.map((content: Content, index: number) => (
-          <Item key={index} {...content} />
-        ))}
-      </AnimationWrapper>
+        <ContentBox contents={contents} />
+      </motion.div>
     </motion.div>
   )
 }

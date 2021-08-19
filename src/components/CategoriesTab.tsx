@@ -17,7 +17,7 @@ const Tab = ({
          ${
            active
              ? `border-black text-black hover:shadow-xl`
-             : 'border-gray-500 text-gray-500'
+             : 'border-gray-300 text-gray-300'
          } hover:border-black hover:text-black`}
       >
         <a className="text-xl font-bold lg:text-2xl">{title}</a>
