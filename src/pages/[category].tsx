@@ -1,12 +1,15 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Item from '@/components/Item'
 import { getCategoryLayout } from '@/layouts/CategoryLayout'
 import ContentBox from '@/components/ContentBox'
 import { AnimatePresence, motion } from 'framer-motion'
-
-import { useConfigStore } from 'src/store'
-import { Content, getCategoriesName, getItems } from '@/logic/item'
+import {
+  Content,
+  getCategories,
+  getCategoriesName,
+  getItems,
+} from '@/logic/item'
 import { getDefaultVariants } from '@/logic/utils'
+import { NextSeo } from 'next-seo'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesName()
@@ -20,8 +23,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const category = params.category
-  const contents: Array<Content> = await getItems(category)
+  const categoryName = params.category
+  const category = getCategories().filter(
+    (category) => category.Name.toLowerCase() === categoryName
+  )[0]
+  const contents: Array<Content> = await getItems(categoryName)
   return {
     props: {
       category,
@@ -34,44 +40,45 @@ const Category = ({
   category,
   contents,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const currentCategory = useConfigStore((state) =>
-    state.getCurrentActiveCategory()
-  )
   const variants = getDefaultVariants(0.3)
   return (
-    <motion.div
-      key={category}
-      className="flex flex-col space-y-4"
-      variants={variants}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-    >
-      <AnimatePresence exitBeforeEnter>
-        {currentCategory && (
+    <>
+      <NextSeo
+        title={`${category.Name} - Awesome Notion`}
+        description={category.Description}
+      />
+      <motion.div
+        key={category.Name}
+        className="flex flex-col space-y-4"
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        <AnimatePresence exitBeforeEnter>
           <motion.h1
-            key={currentCategory.id}
+            key={category.id}
             variants={variants}
             animate="visible"
             initial="hidden"
             exit="hidden"
             className="text-2xl text-center font-bold"
           >
-            {currentCategory.description}
+            {category.Description}
           </motion.h1>
-        )}
-      </AnimatePresence>
-      <motion.div
-        variants={variants}
-        custom={1.5}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        className="flex flex-col space-y-4"
-      >
-        <ContentBox contents={contents} />
+        </AnimatePresence>
+        <motion.div
+          variants={variants}
+          custom={1.5}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          className="flex flex-col space-y-4"
+        >
+          <ContentBox contents={contents} />
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   )
 }
 

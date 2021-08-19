@@ -3,6 +3,7 @@ import { Content, getItemsByTag, getTags } from '@/logic/item'
 import Item from '@/components/Item'
 import { getDefaultVariants } from '@/logic/utils'
 import { motion } from 'framer-motion'
+import { NextSeo } from 'next-seo'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tags = await getTags()
@@ -37,6 +38,7 @@ const Tag = ({
   )[0]
   return (
     <>
+      <NextSeo title={`${originalTag} - Awesome Notion`} />
       <motion.div
         key={tag}
         variants={variants}

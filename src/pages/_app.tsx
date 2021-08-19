@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar'
 import { AnimatePresence } from 'framer-motion'
 import Footer from '@/components/Footer'
 import CategoriesTab from '@/components/CategoriesTab'
+import SEO from '@/components/SEO'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -34,8 +35,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
   return (
     <>
+      <SEO />
       <Navbar />
       <div className="py-4 px-8 sm:px-16 md:px-32 lg:px-40 xl:px-56 mb-20 min-h-screen">
+        <div>
+          <p className="px-4 py-4 mb-8 text-lg sm:text-xl font-bold text-center">
+            A curated list of awesome Notion websites, resources, tools,... and
+            more.
+          </p>
+        </div>
         <CategoriesTab />
         <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
       </div>
