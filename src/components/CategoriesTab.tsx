@@ -13,14 +13,14 @@ const Tab = ({
   return (
     <Link href={link} scroll={false} passHref>
       <div
-        className={`w-full p-4 text-center transition duration-500 border-2 border-black rounded-lg cursor-pointer
+        className={`col-span-1 p-2 xl:p-4 text-center transition duration-500 border-2 border-black rounded-lg cursor-pointer
          ${
            active
              ? `border-black text-black hover:shadow-xl`
              : 'border-gray-300 text-gray-300'
          } hover:border-black hover:text-black`}
       >
-        <a className="text-xl font-bold lg:text-2xl">{title}</a>
+        <a className="text-md lg:text-lg font-bold xl:text-xl">{title}</a>
       </div>
     </Link>
   )
@@ -30,7 +30,7 @@ const CategoriesTab = () => {
   const categories = useConfigStore((state) => state.categories)
 
   return (
-    <div className="flex space-x-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 xl-grid-cols-3 2xl:grid-cols-6 gap-2 lg:gap-4">
       {categories.map((category, index) => {
         const link = `/${category.name.toLowerCase()}`
         return (

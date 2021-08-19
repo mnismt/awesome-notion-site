@@ -13,7 +13,9 @@ const Item = (props: Content) => (
         rel="noreferrer"
       >
         <Favicon key={props.Link} link={props.Link} />
-        <h1 className="text-xl font-bold">{props.Title}</h1>
+        <h1 className="text-sm md:text-md lg:text-xl font-bold">
+          {props.Title}
+        </h1>
         <ExternalLinkIcon width={16} height={16} />
       </a>
       <div className="flex text-sm uppercase py-1">
