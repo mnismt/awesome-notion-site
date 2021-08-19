@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType } from 'next'
-import { Content, getItems } from 'src/logic/item'
+import { Content, getItems, getTags } from 'src/logic/item'
 import Item from '@/components/Item'
 import { getDefaultVariants } from '@/logic/utils'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
@@ -18,8 +18,9 @@ export const getStaticProps = async () => {
 }
 
 const Home = ({ contents }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const variants = getDefaultVariants(0)
+  const variants = getDefaultVariants(0.05)
   const [items, setItems] = useState<Content[]>(contents)
+  const [tags, setTags] = useState<Array<string>>()
   const [showTag, setShowTag] = useState<boolean>(false)
   const [enableAnimation, setEnableAnimation] = useState<boolean>(false)
   const [searchText, setSearchText] = useState('')
@@ -34,6 +35,7 @@ const Home = ({ contents }: InferGetStaticPropsType<typeof getStaticProps>) => {
     setItems(results as Content[])
   }, [searchText])
   useEffect(() => {
+    setTags(items.map((item) => item.Tags).flat())
     setEnableAnimation(true)
   }, [items])
   return (
@@ -59,13 +61,26 @@ const Home = ({ contents }: InferGetStaticPropsType<typeof getStaticProps>) => {
             <AnimatePresence exitBeforeEnter>
               {showTag && (
                 <motion.div
-                  layout
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1, transition: { stiffness: 4 } }}
-                  exit={{ scale: 0, transition: { stiffness: 4 } }}
-                  className="flex items-center justify-center"
+                  layout={enableAnimation}
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  className="flex items-center justify-center flex-wrap"
                 >
-                  <Badge text="API" link="/api" />
+                  {tags?.map((tag, index) => (
+                    <motion.div
+                      key={index}
+                      custom={index}
+                      variants={variants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      className="py-2 px-1"
+                    >
+                      <Badge text={tag} link={`/tag/${tag.toLowerCase()}`} />
+                    </motion.div>
+                  ))}
                 </motion.div>
               )}
             </AnimatePresence>
