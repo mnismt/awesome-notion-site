@@ -24,7 +24,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 export const getItems = async (category?: string) => {
   let contents: Array<Content>
   // If in dev environment, fetching data from mocks will be faster
-  if (!isDevelopment) {
+  if (isDevelopment) {
     contents = itemsMock
   } else {
     const res = await fetch(
@@ -45,7 +45,7 @@ export const getItemsByTag = async (tag: string) => {
   )
 }
 
-export const getCategories = async () => {
+export const getCategories = () => {
   const categories: Array<Category> = categoriesData
   return categories
 }
