@@ -1,7 +1,6 @@
 import { InferGetStaticPropsType } from 'next'
 import ContentBox from '@/components/ContentBox'
 import { motion } from 'framer-motion'
-
 import { Content, getItems } from 'src/logic/item'
 import { getDefaultVariants } from '@/logic/utils'
 

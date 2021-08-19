@@ -1,15 +1,15 @@
-import '../styles/globals.css'
-import 'tailwindcss/tailwind.css'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 import { useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { useConfigStore } from 'src/store'
 import Navbar from '@/components/Navbar'
-import { AnimatePresence } from 'framer-motion'
 import Footer from '@/components/Footer'
 import CategoriesTab from '@/components/CategoriesTab'
 import SEO from '@/components/SEO'
-import Head from 'next/head'
+import '../styles/globals.css'
+import 'tailwindcss/tailwind.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -46,9 +46,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <SEO />
       <Navbar />
-      <div className="py-4 px-8 sm:px-16 md:px-32 lg:px-40 xl:px-56 mb-20 min-h-screen">
+      <div className="min-h-screen px-8 py-4 mb-20 sm:px-16 md:px-32 lg:px-40 xl:px-56">
         <div>
-          <p className="px-4 md:py-4 mb-8 text-lg sm:text-xl font-bold text-center">
+          <p className="px-4 mb-8 text-lg font-bold text-center md:py-4 sm:text-xl">
             A curated list of awesome Notion websites, resources, tools,... and
             more.
           </p>

@@ -14,7 +14,7 @@ const SearchBox = ({
     <input
       type="text"
       placeholder="Search for something useful"
-      className="p-2 border-2 border-gray-200 focus:border-black transition duration-500 rounded-lg outline-none w-full"
+      className="w-full p-2 transition duration-500 border-2 border-gray-200 rounded-lg outline-none focus:border-black"
       onChange={(e) => debounceSetText(e.target.value)}
     />
   )

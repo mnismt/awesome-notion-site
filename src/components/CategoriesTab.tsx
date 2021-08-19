@@ -20,7 +20,7 @@ const Tab = ({
              : 'border-gray-300 text-gray-300'
          } hover:border-black hover:text-black`}
       >
-        <a className="text-md lg:text-lg font-bold xl:text-xl">{title}</a>
+        <a className="font-bold text-md lg:text-lg xl:text-xl">{title}</a>
       </div>
     </Link>
   )
@@ -30,7 +30,7 @@ const CategoriesTab = () => {
   const categories = useConfigStore((state) => state.categories)
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 xl-grid-cols-3 2xl:grid-cols-6 gap-2 lg:gap-4">
+    <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl-grid-cols-3 2xl:grid-cols-6 lg:gap-4">
       {categories.map((category, index) => {
         const link = `/${category.name.toLowerCase()}`
         return (

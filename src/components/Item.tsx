@@ -5,7 +5,7 @@ import Badge from './Badge'
 const ExternalIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4"
+    className="w-4 h-4"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
@@ -28,12 +28,12 @@ const Item = (props: Content) => (
         rel="noreferrer"
       >
         <Favicon key={props.Link} link={props.Link} />
-        <h1 className="text-sm md:text-md lg:text-xl font-bold">
+        <h1 className="text-sm font-bold md:text-md lg:text-xl">
           {props.Title}
         </h1>
         <ExternalIcon />
       </a>
-      <div className="flex text-sm uppercase py-1">
+      <div className="flex py-1 text-sm uppercase">
         <Badge text={props.Category} link={`/${props.Category}`} />
       </div>
       <div>

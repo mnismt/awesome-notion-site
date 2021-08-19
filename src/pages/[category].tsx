@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { AnimatePresence, motion } from 'framer-motion'
 import { getCategoryLayout } from '@/layouts/CategoryLayout'
 import ContentBox from '@/components/ContentBox'
-import { AnimatePresence, motion } from 'framer-motion'
 import {
   Content,
   getCategories,
@@ -62,7 +62,7 @@ const Category = ({
             animate="visible"
             initial="hidden"
             exit="hidden"
-            className="text-2xl text-center font-bold"
+            className="text-2xl font-bold text-center"
           >
             {category.Description}
           </motion.h1>

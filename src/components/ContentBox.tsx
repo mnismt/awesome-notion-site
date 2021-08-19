@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { search } from 'ss-search'
-
+import { Content } from '@/logic/item'
+import { getDefaultVariants, removeDuplicateElements } from '@/logic/utils'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import Badge from './Badge'
 import Item from './Item'
 import SearchBox from './SearchBox'
-
-import { Content } from '@/logic/item'
-import { getDefaultVariants, removeDuplicateElements } from '@/logic/utils'
 
 const ContentBox = ({ contents }: { contents: Content[] }) => {
   const [items, setItems] = useState<Content[]>(contents)
@@ -39,7 +37,7 @@ const ContentBox = ({ contents }: { contents: Content[] }) => {
       <div className="flex flex-col space-y-4">
         <div className="flex items-center justify-center">
           <button
-            className="h-2 w-12 bg-gray-200 hover:bg-black transition duration-300 rounded-xl"
+            className="w-12 h-2 transition duration-300 bg-gray-200 hover:bg-black rounded-xl"
             onClick={(_) => setShowTag(!showTag)}
           ></button>
         </div>
@@ -52,7 +50,7 @@ const ContentBox = ({ contents }: { contents: Content[] }) => {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="flex items-center justify-center flex-wrap"
+                className="flex flex-wrap items-center justify-center"
               >
                 {tags?.map((tag, index) => (
                   <motion.div
@@ -62,7 +60,7 @@ const ContentBox = ({ contents }: { contents: Content[] }) => {
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="py-2 px-1"
+                    className="px-1 py-2"
                   >
                     <Badge text={tag} link={`/tag/${tag.toLowerCase()}`} />
                   </motion.div>
@@ -72,7 +70,7 @@ const ContentBox = ({ contents }: { contents: Content[] }) => {
           </AnimatePresence>
           <motion.div
             layout={enableAnimation}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
           >
             {items.map((content, index: number) => (
               <Item key={index} {...content} />

@@ -48,10 +48,10 @@ const Tag = ({
         className="flex flex-col mt-4 space-y-5"
       >
         <hr className="w-full border-black" />
-        <h1 className="text-2xl lg:text-4xl font-bold text-center">
+        <h1 className="text-2xl font-bold text-center lg:text-4xl">
           {originalTag}
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {contents.map((content: Content, index: number) => (
             <Item key={index} {...content} />
           ))}
