@@ -2,7 +2,7 @@ const fs = require('fs')
 const request = require('request')
 const path = require('path')
 const databaseId = 'aff4b7df4b2f451aaf2f9d53e21b1bdd'
-const env = fs.readFileSync(path.join(__dirname, '/.env.local'), 'utf-8')
+const env = fs.readFileSync(path.join(__dirname, '/.env'), 'utf-8')
 const WORKER_ENDPOINT = env.replace('WORKER_ENDPOINT=', '')
 
 request
