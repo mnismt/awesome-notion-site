@@ -10,11 +10,3 @@ export const getDefaultVariants = (delay: number) => ({
   }),
   hidden: { opacity: 0, y: -10 },
 })
-
-export const checkWebsiteIsLoaded = () => {
-  return window.localStorage.getItem('loaded')
-}
-
-export const setWebsiteLoaded = () => {
-  window.localStorage.setItem('loaded', 'true')
-}

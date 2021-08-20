@@ -1,32 +1,23 @@
 import { useEffect, useState } from 'react'
 import { search } from 'ss-search'
 import { Content } from '@/logic/item'
-import {
-  checkWebsiteIsLoaded,
-  getDefaultVariants,
-  removeDuplicateElements,
-  setWebsiteLoaded,
-} from '@/logic/utils'
+import { getDefaultVariants, removeDuplicateElements } from '@/logic/utils'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import Badge from './Badge'
 import Item from './Item'
 import SearchBox from './SearchBox'
+import { useRouter } from 'next/router'
 
 const ContentBox = ({ contents }: { contents: Content[] }) => {
+  const router = useRouter()
   const [items, setItems] = useState<Content[]>(contents)
   const [tags, setTags] = useState<Array<string>>()
   const [showTag, setShowTag] = useState<boolean>(false)
   const [enableAnimation, setEnableAnimation] = useState<boolean>(false)
-  const [searchText, setSearchText] = useState('')
+  const [searchText, setSearchText] = useState<string>('')
   const variants = getDefaultVariants(0.05)
   useEffect(() => {
-    // check the website's first load, if loaded => display all tags
-    const isLoaded = checkWebsiteIsLoaded()
-    console.log(isLoaded)
-    if (!isLoaded) {
-      setShowTag(true)
-      setWebsiteLoaded()
-    }
+    if (router.pathname === '/') setShowTag(true)
   }, [])
   useEffect(() => {
     setEnableAnimation(false)
