@@ -2,8 +2,7 @@ import { DefaultSeo } from 'next-seo'
 
 const config = {
   title: 'Awesome Notion',
-  description:
-    'A curated list of awesome Notion websites, resources, tools,... and more.',
+  description: 'A curated list of awesome Notion related things',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -11,7 +10,7 @@ const config = {
     site_name: 'Awesome Notion',
     images: [
       {
-        url: 'https://i.imgur.com/WOOt6jf.png',
+        url: 'https://i.imgur.com/308fIQt.png',
         alt: 'Awesome Notion',
       },
     ],
