@@ -22,7 +22,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 
 // dynamic import mocks data
 const getItemsMock = () =>
-  import('../mocks/items.json').then((module) => module.default)
+  import('@/mocks/items.json').then((module) => module.default)
 
 export const getItems = async (category?: string) => {
   let contents: Array<Content>
