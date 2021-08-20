@@ -40,10 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Navbar />
       <div className="min-h-screen px-8 py-4 mb-20 sm:px-16 md:px-32 lg:px-40 xl:px-56">
         <div className="px-4 mb-8 text-lg font-bold text-center md:py-4 sm:text-xl space-y-1">
-          <p>
-            A curated list of awesome Notion websites, resources, tools,... and
-            more
-          </p>
+          <p>A curated list of awesome Notion related things</p>
         </div>
         <CategoriesTab />
         <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
