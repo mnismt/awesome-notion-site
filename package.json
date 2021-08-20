@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node fetchConfig && node fetchMocks && next dev",
-    "build": "node fetchConfig && node fetchMocks && next build",
+    "build": "node fetchConfig && next build",
     "start": "next start",
     "lint": "next lint"
   },
