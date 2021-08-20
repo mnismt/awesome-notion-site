@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useConfigStore } from 'src/store'

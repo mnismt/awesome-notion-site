@@ -15,7 +15,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center justify-center w-1/3">
         <Link href="/" passHref>
-          <a className="text-xl font-bold uppercase duration-500 transform sm:text-2xl lg:text-4xl hover:scale-110">
+          <a className="text-3xl font-bold uppercase duration-1000 transform sm:text-4xl lg:text-5xl hover:scale-125">
             AWSNT
           </a>
         </Link>
