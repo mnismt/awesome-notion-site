@@ -36,21 +36,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <SEO />
       <Navbar />
       <div className="min-h-screen px-8 py-4 mb-20 sm:px-16 md:px-32 lg:px-40 xl:px-56">
-        <div>
-          <p className="px-4 mb-8 text-lg font-bold text-center md:py-4 sm:text-xl">
+        <div className="px-4 mb-8 text-lg font-bold text-center md:py-4 sm:text-xl space-y-1">
+          <p>
             A curated list of awesome Notion websites, resources, tools,... and
-            more.
+            more
           </p>
         </div>
         <CategoriesTab />

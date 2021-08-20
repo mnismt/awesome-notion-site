@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react'
 import { search } from 'ss-search'
 import { Content } from '@/logic/item'
-import { getDefaultVariants, removeDuplicateElements } from '@/logic/utils'
+import {
+  checkWebsiteIsLoaded,
+  getDefaultVariants,
+  removeDuplicateElements,
+  setWebsiteLoaded,
+} from '@/logic/utils'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import Badge from './Badge'
 import Item from './Item'
@@ -14,6 +19,15 @@ const ContentBox = ({ contents }: { contents: Content[] }) => {
   const [enableAnimation, setEnableAnimation] = useState<boolean>(false)
   const [searchText, setSearchText] = useState('')
   const variants = getDefaultVariants(0.05)
+  useEffect(() => {
+    // check the website's first load, if loaded => display all tags
+    const isLoaded = checkWebsiteIsLoaded()
+    console.log(isLoaded)
+    if (!isLoaded) {
+      setShowTag(true)
+      setWebsiteLoaded()
+    }
+  }, [])
   useEffect(() => {
     setEnableAnimation(false)
     const results = search(
