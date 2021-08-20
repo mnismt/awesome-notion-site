@@ -11,7 +11,7 @@ const config = {
     site_name: 'Awesome Notion',
     images: [
       {
-        url: 'https://samuelkraft.com/og.png',
+        url: 'https://i.imgur.com/WOOt6jf.png',
         alt: 'Awesome Notion',
       },
     ],

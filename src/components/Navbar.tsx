@@ -24,6 +24,7 @@ const Navbar = () => {
         <a
           href="https://mnismt.notion.site/Under-review-cd6cb967662f4f6d87a555540dc0dad7"
           target="_blank"
+          rel="noreferrer"
           className="text-sm font-bold duration-500 transform sm:text-md lg:text-xl hover:scale-110"
         >
           Submit

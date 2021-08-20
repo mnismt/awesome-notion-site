@@ -1,5 +1,4 @@
 import { removeDuplicateElements } from './utils'
-import itemsMock from '@/mocks/items.json'
 import categoriesData from '../store/categories.json'
 
 export interface Content {
@@ -21,11 +20,15 @@ export interface Category {
 const WORKER_ENDPOINT = process.env.WORKER_ENDPOINT
 const isDevelopment = process.env.NODE_ENV === 'development'
 
+// dynamic import mocks data
+const getItemsMock = () =>
+  import('../mocks/items.json').then((module) => module.default)
+
 export const getItems = async (category?: string) => {
   let contents: Array<Content>
   // If in dev environment, fetching data from mocks will be faster
   if (isDevelopment) {
-    contents = itemsMock
+    contents = await getItemsMock()
   } else {
     const res = await fetch(
       `${WORKER_ENDPOINT}/v1/table/82de766385fc439fbb010d9cf01e075b`
