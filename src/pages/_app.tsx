@@ -9,6 +9,7 @@ import CategoriesTab from '@/components/CategoriesTab'
 import SEO from '@/components/SEO'
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
+import { postAnalytics } from '@/logic/utils'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const activeAllCategories = useConfigStore().activeAllCategories
   useEffect(() => {
     const path = router.asPath
+    postAnalytics(path)
     if (path !== '/') {
       const index = categories.findIndex((category) =>
         path.includes(category.name.toLowerCase())
