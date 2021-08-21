@@ -33,7 +33,8 @@ const Item = (props: Content) => (
         </h1>
         <ExternalIcon />
       </a>
-      <div className="flex py-1 text-sm uppercase">
+      <div className="flex space-x-1 py-1 text-sm uppercase">
+        <Badge text={props.Type} type={props.Type} />
         <Badge text={props.Category} link={`/${props.Category}`} />
       </div>
       <div>
