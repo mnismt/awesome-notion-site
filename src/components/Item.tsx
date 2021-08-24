@@ -43,7 +43,7 @@ const Item = (props: Content) => (
     </div>
     <div className="flex flex-col space-y-3">
       <hr className="w-full border-black" />
-      <div className="flex space-x-1">
+      <div className="flex flex-wrap justify-items-start items-center gap-1">
         {props.Tags &&
           props.Tags.map((tag, index: number) => (
             <Badge key={index} text={tag} link={`/tag/${tag.toLowerCase()}`} />
