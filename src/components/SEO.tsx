@@ -10,7 +10,7 @@ const config = {
     site_name: 'Awesome Notion',
     images: [
       {
-        url: 'https://i.imgur.com/308fIQt.png',
+        url: 'https://i.imgur.com/TW6axHB.png',
         alt: 'Awesome Notion',
       },
     ],
