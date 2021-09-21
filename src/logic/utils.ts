@@ -16,7 +16,7 @@ export const isDevelopment = () =>
 
 export const postAnalytics = (path: string) => {
   const analyticsEndpoint =
-    'https://awesome-notion-analytics.mnist.repl.co/analytic'
+    'https://viplovetop.npkn.net/awesome-notion-analytics'
   if (!isDevelopment()) {
     fetch(`${analyticsEndpoint}?path=${path}`, { method: 'POST' })
   }
