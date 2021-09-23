@@ -44,6 +44,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
             rel="stylesheet"
           />
+          <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6dd360df023642d0be5e59925f102aab"}'></script>
         </Head>
         <body>
           <Main />
