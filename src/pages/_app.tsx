@@ -8,7 +8,6 @@ import Footer from '@/components/Footer'
 import CategoriesTab from '@/components/CategoriesTab'
 import SEO from '@/components/SEO'
 import '../styles/globals.css'
-import 'tailwindcss/tailwind.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
