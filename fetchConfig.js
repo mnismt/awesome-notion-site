@@ -15,6 +15,4 @@ envFile.split('\n').forEach((envData) => {
 const WORKER_ENDPOINT = env.WORKER_ENDPOINT
 request
   .get(`${WORKER_ENDPOINT}/v1/table/${categoriesDatabaseId}`)
-  .pipe(
-    fs.createWriteStream(path.join(__dirname, './src/store/categories.json'))
-  )
+  .pipe(fs.createWriteStream(path.join(__dirname, './src/store/categories.json')))
