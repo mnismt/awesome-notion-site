@@ -11,13 +11,4 @@ export const getDefaultVariants = (delay: number) => ({
   hidden: { opacity: 0, y: -10 },
 })
 
-export const isDevelopment = () =>
-  process && process.env.NODE_ENV === 'development'
-
-export const postAnalytics = (path: string) => {
-  const analyticsEndpoint =
-    'https://viplovetop.npkn.net/awesome-notion-analytics'
-  if (!isDevelopment()) {
-    fetch(`${analyticsEndpoint}?path=${path}`, { method: 'POST' })
-  }
-}
+export const isDevelopment = () => process && process.env.NODE_ENV === 'development'

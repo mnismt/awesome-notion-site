@@ -9,7 +9,6 @@ import CategoriesTab from '@/components/CategoriesTab'
 import SEO from '@/components/SEO'
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
-import { postAnalytics } from '@/logic/utils'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -18,11 +17,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const activeAllCategories = useConfigStore().activeAllCategories
   useEffect(() => {
     const path = router.asPath
-    postAnalytics(path)
     if (path !== '/') {
-      const index = categories.findIndex((category) =>
-        path.includes(category.name.toLowerCase())
-      )
+      const index = categories.findIndex((category) => path.includes(category.name.toLowerCase()))
       activeCategory(index)
     } else {
       activeAllCategories()
@@ -30,17 +26,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.asPath])
   // check persistent layout
   const getLayout = (Component as any).getLayout
-  const children = getLayout ? (
-    getLayout(<Component {...pageProps} />)
-  ) : (
-    <Component {...pageProps} />
-  )
+  const children = getLayout ? getLayout(<Component {...pageProps} />) : <Component {...pageProps} />
   return (
     <>
       <SEO />
       <Navbar />
       <div className="min-h-screen px-8 py-4 mb-20 sm:px-16 md:px-32 lg:px-40 xl:px-56">
-        <div className="px-4 mb-8 text-lg font-bold text-center md:py-4 sm:text-xl space-y-1">
+        <div className="px-4 mb-8 space-y-1 text-lg font-bold text-center md:py-4 sm:text-xl">
           <p>A curated list of awesome Notion related things</p>
         </div>
         <CategoriesTab />
