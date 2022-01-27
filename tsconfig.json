@@ -23,6 +23,6 @@
       "@/mocks/*": ["src/mocks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/tests/jest-setup.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/tests/jest.setup.js"],
   "exclude": ["node_modules"]
 }
