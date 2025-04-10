@@ -1,5 +1,7 @@
 # Awesome Notion Site
 
+![image](https://github.com/user-attachments/assets/5ee45daf-3269-4ac2-bdce-da11c528edc4)
+
 ## Getting Started
 
 First, run the development server:
