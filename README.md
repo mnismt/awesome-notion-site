@@ -2,6 +2,8 @@
 
 ![image](https://github.com/user-attachments/assets/5ee45daf-3269-4ac2-bdce-da11c528edc4)
 
+Check out Reddit post: https://www.reddit.com/r/Notion/comments/p8scc6/i_made_a_curated_list_of_awesome_notion_related/
+
 ## Getting Started
 
 First, run the development server:
